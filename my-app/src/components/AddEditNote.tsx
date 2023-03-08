@@ -5,12 +5,12 @@ import { Note } from "../models/note";
 import { NoteInput } from "../network/notes_api";
 import * as NoteApi from "../network/notes_api";
 
-interface AddNoteProps {
+interface AddEditNoteProps {
   onDismiss: () => void;
   onNoteSave: (note: Note) => void;
 }
 
-const AddNote = ({ onDismiss, onNoteSave }: AddNoteProps) => {
+const AddEditNote = ({ onDismiss, onNoteSave }: AddEditNoteProps) => {
   const {
     register,
     handleSubmit,
@@ -70,4 +70,4 @@ const AddNote = ({ onDismiss, onNoteSave }: AddNoteProps) => {
   );
 };
 
-export default AddNote;
+export default AddEditNote;
