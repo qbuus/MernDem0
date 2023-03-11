@@ -16,14 +16,8 @@ export const getAuth: RequestHandler = async function (
   next
 ) {
   try {
-    const authUser = req.session.userId;
-
-    if (!authUser) {
-      throw createHttpError(401, "user not auth'ed");
-    }
-
     const userAuth = await user
-      .findById(authUser)
+      .findById(req.session.userId)
       .select("+email")
       .exec();
     res.status(200).json(userAuth);

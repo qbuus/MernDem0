@@ -9,6 +9,7 @@ import session from "express-session";
 import env from "./util/validateEnv";
 const app = express();
 import MongoStore from "connect-mongo";
+import { requiresAuth } from "./middleware/auth";
 
 app.use(morgan("dev"));
 
@@ -27,7 +28,7 @@ app.use(
     }),
   })
 );
-app.use("/api/notes", noteRoutes);
+app.use("/api/notes", requiresAuth, noteRoutes);
 app.use("/api/users", userRoutes);
 
 app.use(function (req, res, next) {
